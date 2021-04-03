@@ -17,18 +17,18 @@
  * @param theValue the value to find the root for.
  * @param thePrecision stops algorithm when guess^2 is this much away from value.
  * @param theG the guess to start approximation at.
- * @return float which is approximation of root of value.
+ * @return double which is approximation of root of value.
  */
-double squareRoot(const int theValue, const int thePrecision, const double theG) {
+long double squareRoot(double theValue, double thePrecision, long double theG) {
+    
 
-    double gSquared = theG * theG;
-    double xDivG = theValue / theG;
-    double newG = (theG + theValue / theG) / 2;
+    long double newG = (theG + (theValue / theG)) / (double) 2;
+    // printf("%lf\n", newG);
 
-    if (abs(theValue - (newG * newG)) > thePrecision) {
-        squareRoot(theValue, thePrecision, newG);
-    } 
-    return newG;
+    if (fabs(theValue - (newG * newG)) > thePrecision) {
+        newG = squareRoot(theValue, thePrecision, newG);
+    }
+        return newG;
 }
 
 /**
@@ -37,11 +37,11 @@ double squareRoot(const int theValue, const int thePrecision, const double theG)
  */
 void main () {
 
-    double root0 = squareRoot(40, 0.1, 6.0f);
-    double root1 = squareRoot(50, 0.1, 6.0f);
+    long double root0 = squareRoot(40, (double) 0.00001, 6);
+    long double root1 = squareRoot(50, (double) 0.0000000000001, 6);
 
-    printf("%f\n", root0);
-    printf("%f\n", root1);
+    printf("%.15Lf\n", root0);
+    printf("%.15Lf\n", root1);
 
     
 
