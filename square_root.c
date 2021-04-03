@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /**
  * @file square_root.c
@@ -20,15 +21,11 @@
  * @return double which is approximation of root of value.
  */
 long double squareRoot(double theValue, double thePrecision, long double theG) {
-    
-
     long double newG = (theG + (theValue / theG)) / (double) 2;
-    // printf("%lf\n", newG);
-
     if (fabs(theValue - (newG * newG)) > thePrecision) {
         newG = squareRoot(theValue, thePrecision, newG);
     }
-        return newG;
+    return newG;
 }
 
 /**
@@ -37,12 +34,14 @@ long double squareRoot(double theValue, double thePrecision, long double theG) {
  */
 void main () {
 
-    long double root0 = squareRoot(40, (double) 0.00001, 6);
-    long double root1 = squareRoot(50, (double) 0.0000000000001, 6);
+    long double precision = 0.00000000000000001;
+    long double root0 = squareRoot(40, (double) precision, 6);
+    long double root1 = squareRoot(50, (double) precision, 6);
 
-    printf("%.15Lf\n", root0);
-    printf("%.15Lf\n", root1);
+    char string0[22] = "Square root of 40 is: ";
+    char string1[22] = "Square root of 50 is: ";
 
-    
+    printf("%s%.20Lf\n", string0, root0);
+    printf("%s%.20Lf\n", string1, root1);
 
 }
