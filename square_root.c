@@ -32,7 +32,7 @@ long double squareRoot(double theValue, double thePrecision, long double theG) {
  * @brief Main method of program.
  * 
  */
-void main () {
+int main () {
 
     long double precision = 0.00000000000000001;
     long double root0 = squareRoot(40, (double) precision, 6);
@@ -43,5 +43,7 @@ void main () {
 
     printf("%s%.20Lf\n", string0, root0);
     printf("%s%.20Lf\n", string1, root1);
+
+    return 0;
 
 }
